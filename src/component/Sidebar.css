@@ -1,0 +1,74 @@
+/* Basic styles for the sidebar */
+nav {
+    transition: width 0.3s ease-in-out; /* Animasi perubahan lebar */
+}
+
+/* Styles when the sidebar is collapsed */
+.w-16 {
+    width: 4rem; /* Lebar sidebar saat di-collapse */
+}
+
+/* Styles for the logo area */
+.logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the logo */
+    margin-bottom: 2rem; 
+}
+
+/* Styles for the menu items */
+.group {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    padding: 0.5rem 0;
+    cursor: pointer;
+    transition: background-color 0.2s; /* Add a transition for background color */
+}
+
+.group:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Example hover effect */
+}
+
+.group.active {
+    background-color: #4f46e5; /* Highlight the active group */
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.item-text {
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Styles for the dropdown menu */
+.group ul {
+    transition: all 0.3s;
+}
+
+.group li {
+    display: flex; /* Make list items flex containers */
+    align-items: center; /* Vertically align items */
+}
+
+.group li div {
+    width: 100%; /* Make the div fill the width of the li */
+}
+
+/* Rotate the dropdown arrow icon when open */
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+/* Hide nested dropdowns initially */
+.group ul ul {
+    display: none;
+}
+
+/* Show nested dropdowns on hover of parent item */
+.group li:hover > ul {
+    display: block;
+}

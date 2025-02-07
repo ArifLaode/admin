@@ -1,0 +1,51 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 30;
+  right: 0;
+  z-index: 100;
+  width: 85%;
+}.flex > aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  width: 290px;
+}.flex > main {
+  margin-top:   7%;
+  margin-left: 15.5%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0eded;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.card:hover {
+  opacity: 0.7;
+}
+
+.primary-color {
+  background-color: #faba25;
+  color: black;
+}
+
+.secondary-color {
+  background-color: #001ee0;
+  color: white;
+}
+
+.tertiary-color {
+  background-color: #ffee0c;
+  color: black;
+}

@@ -1,0 +1,49 @@
+.header-div {
+    display: flex;
+}
+
+.header-user {
+  width: 250px;
+  height: 55px;
+  background-color: rgb(157, 167, 157);
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
+  display: flex; /* Aktifkan Flexbox */
+  align-items: center; /* Vertikal tengah */
+  padding-left: 30px; /* Tambahkan padding kiri agar tidak terlalu mepet */
+  gap: 10px; /* Spasi antar icon dan text*/
+}
+
+.header-user:hover {
+    background-color: darkorange;
+}
+
+.header-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f0eded;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s;
+}
+
+.header-end {
+    width: 160px;
+    background-color: blue;
+    display: flex;
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
+    align-items: center;
+    padding-left: 30px;
+    gap: 20px;
+}
+
+.gear:hover {
+    transform: rotate(90deg);
+}
+
+.header-icon:hover {
+    background-color: darkorange;
+}
