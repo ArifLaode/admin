@@ -2,38 +2,39 @@ import React from "react";
 import Section from "../component/Section";
 import Card from "../component/Card";
 import { CgDollar } from "react-icons/cg";
-import { FaUser, FaChartPie } from "react-icons/fa6";
+import { TbPackageImport } from "react-icons/tb";
+import { LuPackageCheck } from "react-icons/lu";
+import { GiWeight } from "react-icons/gi";
 
 const Dashboard = () => {
     const cardData = [
       {
-        title: 'Total Pengguna',
-        content: '1250',
-        icon: <FaUser size={24} />,
+        title: 'Paket Terinput',
+        content: '273',
+        icon: <TbPackageImport size={64} />,
         navigationLink: '/users',
-        useLinker: false,
         backgroundColor: 'primary-color',
       },
       {
-        title: 'Pendapatan Bulan Ini',
-        content: 'Rp 15.000.000',
-        icon: <CgDollar size={64} />,
+        title: 'Paket Delivery',
+        content: '781',
+        icon: <LuPackageCheck size={64} />,
         navigationLink: '/income',
         backgroundColor: 'bg-green-500',
         textColor: 'white',
       },
       {
-        title: 'Produk Terjual',
+        title: 'Total Berat',
         content: '850',
-        icon: <FaChartPie size={64} />,
+        icon: <GiWeight size={64} />,
         navigationLink: '/products',
-        backgroundColor: 'bg-red-500',
-        textColor: 'white',
+        backgroundColor: 'bg-yellow-500',
+        textColor: 'black',
       },
       {
-        title: 'Produk Terjual',
-        content: '850',
-        icon: <FaChartPie size={64} />,
+        title: 'Pendapatan dari Paket',
+        content: <span className="flex flex-wrap">Rp. <h2>300000</h2></span>,
+        icon: <CgDollar size={64} />,
         navigationLink: '/products',
         backgroundColor: 'secondary-color',
         textColor: 'white',
@@ -50,19 +51,20 @@ const Dashboard = () => {
           </div>
         </Section>
   
-        <Section title="Grafik Penjualan">
-          {/* Anda bisa menambahkan grafik di sini */}
-          <p>Grafik akan ditampilkan di sini.</p>
-        </Section>
-  
-        <Section title="Aktivitas Terbaru">
-          {/* Anda bisa menambahkan daftar aktivitas terbaru di sini */}
-          <ul>
-            <li>Pengguna baru mendaftar.</li>
-            <li>Produk baru ditambahkan.</li>
-            <li>Pesanan baru diterima.</li>
-          </ul>
-        </Section>
+        <div className="flex flex-wrap justify-between">
+          <Section title="Grafik Penjualan" width={70}>
+            <p>Grafik akan ditampilkan di sini.</p>
+          </Section>
+    
+          <Section title="Aktivitas Terbaru" width={29}>
+            <ul>
+              <li>Pengguna baru mendaftar.</li>
+              <li>Produk baru ditambahkan.</li>
+              <li>Pesanan baru diterima.</li>
+            </ul>
+          </Section>
+        </div>
+
         <Section title="Aktivitas Terbaru">
           {/* Anda bisa menambahkan daftar aktivitas terbaru di sini */}
           <ul>

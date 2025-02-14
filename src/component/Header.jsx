@@ -2,7 +2,7 @@ import React from "react";
 import { FaUserCircle, FaCog } from "react-icons/fa";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import { GoHome } from "react-icons/go";
-import './../custom.css'
+import './custom.css'
 
 
 const Header = () => (

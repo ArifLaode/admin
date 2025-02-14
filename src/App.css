@@ -49,3 +49,33 @@ body::-webkit-scrollbar {
   background-color: #ffee0c;
   color: black;
 }
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+.data-table {
+  border-collapse: collapse;
+  margin-top: 60px;
+  border-radius: 6px;
+  overflow: hidden; /* Penting untuk border-radius */
+  table-layout: auto; /* Hapus atau sesuaikan jika diperlukan */
+}.table-header {
+  background-color: #1531e4dc; /* Contoh warna header */
+  color: #dfdfdf; /* Contoh warna teks header */
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+}.table-cell {
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+}.data-table tr.even {
+  background-color: #f2f2f2; /* Warna latar belakang baris genap */
+}.data-table tr.odd {
+  background-color: white; /* Warna latar belakang baris ganjil */
+}.data-table tr:hover {
+  background-color: #ddd; /* Hover effect */
+}

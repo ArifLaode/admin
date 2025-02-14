@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 import { motion } from 'framer-motion';
 
-const Section = ({ title, children }) => {
+const Section = ({ title, children, width, collapse }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const sectionStyle = {
@@ -13,7 +13,7 @@ const Section = ({ title, children }) => {
     padding: '20px',
     marginBottom: '20px',
     backgroundColor: 'white',
-    width: width,
+    width: `${width}%`,
   };
 
   const titleStyle = {
@@ -30,7 +30,7 @@ const Section = ({ title, children }) => {
     <div style={sectionStyle}>
       <div style={titleStyle} onClick={() => setIsCollapsed(!isCollapsed)}>
         <h2>{title}</h2>
-        <button>
+          <button>
           {isCollapsed? <SlArrowDown size={20} />: <SlArrowUp size={20} />}
         </button>
       </div>
@@ -48,6 +48,11 @@ const Section = ({ title, children }) => {
 Section.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  width: PropTypes.number,
+};
+
+Section.defaultProps = {
+  width: 100,
 };
 
 export default Section;

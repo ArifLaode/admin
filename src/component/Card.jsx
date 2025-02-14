@@ -1,23 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { LuSquareArrowOutUpRight } from 'react-icons/lu';
 
 const Card = ({ icon, title, content, navigationLink, backgroundColor, textColor, padding, width, height, useLinker }) => {
   const [animatedContent, setAnimatedContent] = useState(0);
-  const cardStyle = {
-    backgroundColor: backgroundColor,
-    color: textColor,
-    padding: padding,
-    width: width,
-    height: height,
-    marginBottom: '20px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    borderRadius: '10px',
-    boxShadow: '0 3px 6px rgba(0, 0, 0, 0.8)',
-    gap: '10px',
-  };
 
   useEffect(() => {
     // Periksa apakah content hanya berisi angka
@@ -48,8 +34,23 @@ const Card = ({ icon, title, content, navigationLink, backgroundColor, textColor
     }
   }, [content]);
 
+  const cardStyle = {
+    color: textColor,
+    padding: padding,
+    width: width,
+    height: height,
+    marginBottom: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    borderRadius: '10px',
+    boxShadow: '0 3px 6px rgba(0, 0, 0, 0.8)',
+    gap: '10px',
+    transition: 'opacity 0.5s ease', // Add transition for smooth hover effect
+  };
+
   return (
-    <div style={cardStyle}>
+    <div style={cardStyle} className={`${backgroundColor} hover:opacity-75`}>
       {icon && <div style={{ display: 'flex', justifyContent: 'center', marginTop: `2px` }}>{icon}</div>}
       {title && <h2 style={{ fontSize: `24px`, marginBottom: '2%', justifyContent: 'center', display: 'flex' }} className='font-bold'>{title}</h2>}
       {content && <p style={{ fontSize: `32px`, justifyContent: 'center', display: 'flex'}} className='font-bold'>{animatedContent}</p>}
@@ -73,11 +74,11 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  backgroundColor: '#ffffff',
+  backgroundColor: 'bg-white',
   textColor: '#000000',
   padding: '20px',
-  width: '300px',
-  height: '250px',
+  width: '350px',
+  height: '230px',
   useLinker: true,
 };
 
