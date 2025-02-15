@@ -8,8 +8,9 @@ import { TbReportAnalytics } from 'react-icons/tb';
 import Logo from '../assets/logo.png';
 
 const Navbar = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(null);
+  const [openDropdowns, setOpenDropdowns] = useState([]);
   const [activeMenu, setActiveMenu] = useState('dashboard');
+  const [activeChild, setActiveChild] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -23,18 +24,29 @@ const Navbar = () => {
     if (currentMenu) {
       // 2. If a dropdown link matches, set the parent menu as active
       setActiveMenu(currentMenu.name);
-      setIsDropdownOpen(currentMenu.name);
+      
+      // 3. Also find and set the active child
+      const activeDropdownItem = currentMenu.dropdown.find(item => item.link === currentPath);
+      if (activeDropdownItem) {
+        setActiveChild(activeDropdownItem.text);
+        // Ensure dropdown is open when a child is active
+        if (!openDropdowns.includes(currentMenu.name)) {
+          setOpenDropdowns(prev => [...prev, currentMenu.name]);
+        }
+      }
     } else {
-      // 3. Otherwise, check for a direct menu link match
+      // 4. Otherwise, check for a direct menu link match
       currentMenu = menus.find((menu) => menu.link === currentPath);
       if (currentMenu) {
         setActiveMenu(currentMenu.name);
+        setActiveChild(null); // Reset active child
       } else {
-        // 4. If no match, set a default active menu (e.g., 'dashboard')
-        setActiveMenu('dashboard'); 
+        // 5. If no match, set a default active menu (e.g., 'dashboard')
+        setActiveMenu('dashboard');
+        setActiveChild(null); // Reset active child
       }
     }
-  }, [location]);
+  }, [location, openDropdowns]);
 
   const menus = [
     {
@@ -54,10 +66,8 @@ const Navbar = () => {
       icon: <FaGears className="h-10 w-5" />,
       text: 'Konfigurasi',
       dropdown: [
-        { text: 'Harga', link: '/konfigurasi/harga' },
-        { text: 'Tujuan', link: '/konfigurasi/tujuan' },
-        { text: 'Koordinat', link: '/konfigurasi/koordinat' },
-        { text: 'Pengguna', link: '/konfigurasi/pengguna' },
+        { text: 'Lokasi', link: '/konfigurasi/harga' },
+        { text: 'Pengguna', link: '/konfigurasi/user' },
       ],
     },
     {
@@ -73,6 +83,16 @@ const Navbar = () => {
     },
   ];
 
+  const toggleDropdown = (menuName) => {
+    setOpenDropdowns(prev => {
+      if (prev.includes(menuName)) {
+        return prev.filter(name => name !== menuName);
+      } else {
+        return [...prev, menuName];
+      }
+    });
+  };
+
   return (
     <aside>
       <nav className="primary-color text-black h-screen p-4 fixed" style={{ width: '15%' }}>
@@ -85,15 +105,17 @@ const Navbar = () => {
         <ul>
           {menus.map((menu) => (
             <li key={menu.name} className={`mb-3 group ${menu.dropdown ? '' : 'hover:bg-gray-700 cursor-pointer rounded-md'}`}>
-              <Link to={menu.link || '#'} className={`flex items-center p-2 rounded-md cursor-pointer ${activeMenu === menu.name ? 'secondary-color' : ''}`}
-                onClick={() => {
+              <Link
+                to={menu.link || '#'}
+                className={`flex items-center p-2 rounded-md cursor-pointer ${activeMenu === menu.name ? 'secondary-color' : ''}`}
+                onClick={(e) => {
                   if (menu.dropdown) {
-                    // Toggle dropdown tanpa mengubah activeMenu
-                    setIsDropdownOpen(isDropdownOpen === menu.name ? null : menu.name);
+                    e.preventDefault(); // Prevent navigation for dropdown menus
+                    toggleDropdown(menu.name);
                   } else {
                     // Set activeMenu hanya jika menu tidak memiliki dropdown
                     setActiveMenu(menu.name);
-                    setIsDropdownOpen(null);
+                    setActiveChild(null); // Reset active child when clicking a non-dropdown menu
                   }
                 }}
               >
@@ -102,18 +124,22 @@ const Navbar = () => {
                 {menu.dropdown && (
                   <FaAngleDown
                     className={`ml-auto h-5 w-5 transition-transform ${
-                      isDropdownOpen === menu.name ? 'rotate-180' : ''
+                      openDropdowns.includes(menu.name) ? 'rotate-180' : ''
                     }`}
                   />
                 )}
               </Link>
 
               {/* Dropdown */}
-              {menu.dropdown && isDropdownOpen === menu.name && (
-                <ul className="ml-8 mt-1" style={{width: '100%'}}>
+              {menu.dropdown && openDropdowns.includes(menu.name) && (
+                <ul className="ml-5 primary-color opacity-80 rounded-md">
                   {menu.dropdown.map((dropdownItem, idx) => (
-                    <li key={idx} className="mb-1">
-                      <Link to={dropdownItem.link} className="p-2 rounded-md cursor-pointer hover:bg-gray-700">
+                    <li key={idx} className="mb-1 hover:bg-gray-700 rounded-md">
+                      <Link 
+                        to={dropdownItem.link} 
+                        className={`block p-2 rounded-md cursor-pointer ${activeChild === dropdownItem.text ? 'secondary-color' : ''}`}
+                        onClick={() => setActiveChild(dropdownItem.text)}
+                      >
                         {dropdownItem.text}
                       </Link>
                     </li>

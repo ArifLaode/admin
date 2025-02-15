@@ -4,6 +4,7 @@ import Sidebar from "./component/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import InputPage from "./pages/input";
 import ConfigHarga from "./pages/ConfigHarga";
+import User from "./pages/User";
 import './App.css'
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/input-package" element={<InputPage />} />
             <Route path="/konfigurasi/harga" element={<ConfigHarga />} />
+            <Route path="/konfigurasi/user" element={<User />} />
+            <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>
         </main>
       </div>
