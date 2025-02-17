@@ -79,3 +79,24 @@ body::-webkit-scrollbar {
 }.data-table tr:hover {
   background-color: #ddd; /* Hover effect */
 }
+
+.map-input-container {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically align items */
+  /* If you want to control the overall width of the entire input + icon */
+  /* width: 300px;  */
+}
+
+.map-input-container .input-group {
+  width: 100%; /* Let the input group take up its natural width */
+  flex: 1; /* Allow the input to grow to fill available space */
+}
+
+.map-input-container .input-group-append {
+  margin-left: -1px; /* Adjust spacing between input and icon */
+}
+
+.map-input-container .input-group-text {
+/* Some Bootstrap versions add padding that might make it look off */
+padding: 0.375rem 0.75rem; /* Adjust as needed */
+}
