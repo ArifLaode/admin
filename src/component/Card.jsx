@@ -46,7 +46,7 @@ const Card = ({ icon, title, content, navigationLink, backgroundColor, textColor
     borderRadius: '10px',
     boxShadow: '0 3px 6px rgba(0, 0, 0, 0.8)',
     gap: '10px',
-    transition: 'opacity 0.5s ease', // Add transition for smooth hover effect
+    transition: 'ease', // Add transition for smooth hover effect
   };
 
   return (

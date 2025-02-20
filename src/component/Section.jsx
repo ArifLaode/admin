@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
-import { motion } from 'framer-motion';
+import { color, motion } from 'framer-motion';
 
 const Section = ({ title, children, width, collapse }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -14,6 +14,16 @@ const Section = ({ title, children, width, collapse }) => {
     marginBottom: '20px',
     backgroundColor: 'white',
     width: `${width}%`,
+  };
+
+  const buttonStyle = {
+    background: 'none', // Hilangkan background
+    border: 'none',      // Hilangkan border
+    padding: 0,         // Hilangkan padding
+    cursor: 'pointer',   // Pastikan cursor pointer
+    color: 'black',
+    justifyContent: 'justify-end',
+    width: '40px'
   };
 
   const titleStyle = {
@@ -30,8 +40,8 @@ const Section = ({ title, children, width, collapse }) => {
     <div style={sectionStyle}>
       <div style={titleStyle} onClick={() => setIsCollapsed(!isCollapsed)}>
         <h2>{title}</h2>
-          <button>
-          {isCollapsed? <SlArrowDown size={20} />: <SlArrowUp size={20} />}
+          <button style={buttonStyle}>
+          {isCollapsed? <SlArrowDown size={20} width={2} />: <SlArrowUp size={20} />}
         </button>
       </div>
       <motion.div

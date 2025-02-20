@@ -17,7 +17,7 @@ const SectionPage = ({ title, children, width, height, item }) => {
 
   const titleStyle = {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'justify-between',
     alignItems: 'center',
     marginBottom: '10px',
     fontWeight: 'bold',
