@@ -15,10 +15,10 @@ function App() {
         <Header />
         <main className="p-4">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/input-package" element={<InputPage />} />
-            <Route path="/konfigurasi/harga" element={<ConfigHarga />} />
-            <Route path="/konfigurasi/user" element={<User />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/input-package" element={<InputPage />} />
+            <Route path="/dashboard/konfigurasi/harga" element={<ConfigHarga />} />
+            <Route path="/dashboard/konfigurasi/user" element={<User />} />
             <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>
         </main>

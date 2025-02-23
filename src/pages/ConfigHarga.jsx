@@ -85,6 +85,18 @@ const ConfigHarga = () => {
         setData(newData);
     };
 
+    const handleAddSekitar = (index) => {
+        const newData = [...data];
+        newData[index].sekitar.push('');
+        setData(newData);
+    };
+
+    const handleSekitarItemChange = (index, itemIndex, value) => {
+        const newData = [...data];
+        newData[index].sekitar[itemIndex] = value;
+        setData(newData);
+    };
+
     const column = [
         { Header: 'No', accessor: 'no' },
         { Header: 'Tujuan', accessor: 'tujuan' },
@@ -122,12 +134,20 @@ const ConfigHarga = () => {
                                             {col.accessor === 'no'? (
                                                 row[col.accessor]
                                             ): col.accessor === 'sekitar'? (
-                                                <input
-                                                    type='text'
-                                                    value={row[col.accessor].join(', ')}
-                                                    onChange={(e) => handleSekitarChange(index, e.target.value)}
-                                                    style={{ textAlign: 'center' }}
-                                                />
+                                                <div>
+                                                    {row[col.accessor].map((item, itemIndex) => (
+                                                        <input
+                                                            key={itemIndex}
+                                                            type='text'
+                                                            value={item}
+                                                            onChange={(e) => handleSekitarItemChange(index, itemIndex, e.target.value)}
+                                                            style={{ textAlign: 'center', marginBottom: '5px' }}
+                                                        />
+                                                    ))}
+                                                    <button onClick={() => handleAddSekitar(index)} className='secondary-color py-1 px-1 rounded-xl cursor-pointer' title='Tambah Sekitar'>
+                                                        <FaPlus size={16} />
+                                                    </button>
+                                                </div>
                                             ): col.accessor === 'harga'? (
                                                 <input
                                                     type='text'

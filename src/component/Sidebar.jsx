@@ -53,21 +53,21 @@ const Navbar = () => {
       name: 'dashboard',
       icon: <RxDashboard className="h-10 w-5" />,
       text: 'Dashboard',
-      link: '/',
+      link: '/dashboard',
     },
     {
       name: 'data-utama',
       icon: <LuPackagePlus className="h-10 w-5" />,
       text: 'Input Paket',
-      link: '/input-package',
+      link: '/dashboard/input-package',
     },
     {
       name: 'konfigurasi',
       icon: <FaGears className="h-10 w-5" />,
       text: 'Konfigurasi',
       dropdown: [
-        { text: 'Lokasi', link: '/konfigurasi/harga' },
-        { text: 'Pengguna', link: '/konfigurasi/user' },
+        { text: 'Lokasi', link: '/dashboard/konfigurasi/harga' },
+        { text: 'Pengguna', link: '/dashboard/konfigurasi/user' },
       ],
     },
     {
@@ -75,10 +75,10 @@ const Navbar = () => {
       icon: <TbReportAnalytics className="h-10 w-5" />,
       text: 'Laporan',
       dropdown: [
-        { text: 'Laporan Harian', link: '/laporan/harian' },
-        { text: 'Manifest', link: '/laporan/manifest' },
-        { text: 'Laporan Lengkap', link: '/laporan/lengkap' },
-        { text: 'Belum Dikonfirmasi', link: '/laporan/belum-dikonfirmasi' },
+        { text: 'Laporan Harian', link: '/dashboard/laporan/harian' },
+        { text: 'Manifest', link: '/dashboard/laporan/manifest' },
+        { text: 'Laporan Lengkap', link: '/dashboard/laporan/lengkap' },
+        { text: 'Belum Dikonfirmasi', link: '/dashboard/laporan/belum-dikonfirmasi' },
       ],
     },
   ];

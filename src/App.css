@@ -100,3 +100,9 @@ body::-webkit-scrollbar {
 /* Some Bootstrap versions add padding that might make it look off */
 padding: 0.375rem 0.75rem; /* Adjust as needed */
 }
+
+.login-contener {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically align items */
+  justify-content: center;
+}

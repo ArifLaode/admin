@@ -5,6 +5,7 @@ import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
 import 'leaflet-control-geocoder';
 import { FaLocationArrow } from 'react-icons/fa';
 import Modal from 'react-modal';
+import './MapPicker.css'; // Import the CSS file for styling
 
 // Fix untuk icon Leaflet
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -176,23 +177,16 @@ const MapPicker = ({ initialCoordinates = [0, 0], onCoordinateChange }) => {
 
     return (
         <div className='map-input-container'>
-            <div className="input-group">
+            <div className="input-group map-input-group">
                 <input
                     type="text"
-                    className="form-control"
+                    className="form-control map-input"
                     value={`${currentCoordinates[0]}, ${currentCoordinates[1]}`}
                     onChange={handleInputChange}
                     readOnly
-                    style={{ width: '200px' }} // Set your desired width here
                 />
-                <div className="input-group-append">
-                    <span
-                        className="input-group-text"
-                        onClick={handleIconClick}
-                        style={{ cursor: 'pointer' }}
-                    >
-                        <FaLocationArrow />
-                    </span>
+                <div className="input-group-append map-input-icon" onClick={handleIconClick}>
+                    <FaLocationArrow />
                 </div>
             </div>
 
