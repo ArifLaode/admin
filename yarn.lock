@@ -2339,6 +2339,16 @@ react-router@7.1.5:
     set-cookie-parser "^2.6.0"
     turbo-stream "2.4.0"
 
+react-spinner@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/react-spinner/-/react-spinner-0.2.7.tgz#ea3ca3375dd7a54edbb5cc01d17496a2e2fc14db"
+  integrity sha512-9bIDWGIumXpM7xcas/qpikRZp7AGP1uehgxwTTj/5DL6SwWHMTLfuioYgX7bdeMgOiVEMvOgLyXU3fYKQc16IA==
+
+react-spinners@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.15.0.tgz#bb9536a3839ab4e1513bb98847d79cc1fc930b93"
+  integrity sha512-ZO3/fNB9Qc+kgpG3SfdlMnvTX6LtLmTnOogb3W6sXIaU/kZ1ydEViPfZ06kSOaEsor58C/tzXw2wROGQu3X2pA==
+
 react@18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
