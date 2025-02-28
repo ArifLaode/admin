@@ -40,7 +40,7 @@ const Login = ({ onLoginSuccess }) => {
         if (data && data.success) {
           setResponseMessage("Login successful!");
           localStorage.setItem('token', data.token);
-          localStorage.setItem('username', data.username)
+          localStorage.setItem('username', data.username);
           setDirectHome(true);
           if (data.token !== null) {
             setResponseMessage("Login successful!");

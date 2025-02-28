@@ -33,7 +33,7 @@ const Header = () => {
             <div className="header-icon">
                 <FaArrowRightToBracket onClick={() => setModalOpen(true)} size={24} />
                 {modalOpen && (
-                  <div className="modal-overlay fixed top-0 left-0 w-full h-full bg-transparent bg-opacity-50 flex justify-center items-center">
+                  <div className="modal-overlay fixed top-0 left-0 w-full h-full flex justify-center items-center" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                     <div className="modal-wrapper bg-white py-10 px-10 rounded-lg border-2 border-amber-950">
                       <div className="modal-header">
                         <h3 className="text-blue-900 text-xl font-bold">Logout</h3>
