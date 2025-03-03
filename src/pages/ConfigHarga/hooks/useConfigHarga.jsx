@@ -1,6 +1,6 @@
 // pages/ConfigHarga/hooks/useConfigHarga.js
 import { useState, useEffect } from 'react';
-import { fetchTujuanData, addTujuanData } from '../services/api';
+import { fetchTujuanData, addTujuanData, updateTujuanData } from '../services/api';
 
 export const useConfigHarga = () => {
     const [data, setData] = useState([]);
@@ -63,29 +63,41 @@ export const useConfigHarga = () => {
         }
     };
 
-    const handleUpdateData = (index, updatedData) => {
-        setData(prevData => {
-            const newData = [...prevData];
-            newData[index] = { ...newData[index], ...updatedData };
-            return newData;
-        });
+    const handleUpdateData = async (index, updatedData) => {
+        try {
+            // Create a copy of the data to be updated
+            const itemToUpdate = { ...data[index], ...updatedData };
+            
+            // Call the API to update the data
+            await updateTujuanData(itemToUpdate);
+            
+            // Update the state
+            setData(prevData => {
+                const newData = [...prevData];
+                newData[index] = { ...newData[index], ...updatedData };
+                return newData;
+            });
+            
+            return { success: true };
+        } catch (err) {
+            setError('Gagal memperbarui data: ' + err.message);
+            return { success: false, error: err.message };
+        }
     };
 
-    const handleDeleteData = (index, deleteData) => {
-        setData(prevData => {
-            const newData = [...prevData];
-            newData.splice(index, 1);
-            return newData;
-        });
-        deleteData();
-    };
-
-    const handleSekitarUpdate = (index, sekitarList) => {
-        handleUpdateData(index, { sekitar: sekitarList });
-    };
-
-    const handleCoordinateUpdate = (index, lat, lng) => {
-        handleUpdateData(index, { koordinat: [lat, lng] });
+    const handleDeleteData = async (id) => {
+        try {
+            // Call the API to delete the data (you need to implement deleteTujuanData in your API service)
+            // await deleteTujuanData(id);
+            
+            // Update the state by removing the deleted item
+            setData(prevData => prevData.filter(item => item.id_tujuan !== id));
+            
+            return { success: true };
+        } catch (err) {
+            setError('Gagal menghapus data: ' + err.message);
+            return { success: false, error: err.message };
+        }
     };
 
     return {
@@ -97,8 +109,7 @@ export const useConfigHarga = () => {
         setModalIsOpen,
         handleAddData,
         handleUpdateData,
-        handleSekitarUpdate,
-        handleCoordinateUpdate,
+        handleDeleteData,
         refreshData: loadData
     };
 };

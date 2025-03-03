@@ -2,37 +2,34 @@ import React from 'react';
 import { COLUMNS } from '../constants';
 import TableCell from './TableCell';
 
-const ConfigHargaTable = ({ data, setData }) => {
+const ConfigHargaTable = ({ data, onUpdateData }) => {
     const handleInputChange = (index, field, value) => {
         const newValue = field === 'harga' ? value.replace(/[^0-9]/g, '') : value;
-        const newData = [...data];
-        newData[index][field] = newValue;
-        setData(newData);
+        // Only update the specific field that changed
+        onUpdateData(index, { [field]: newValue });
     };
 
     const handleSekitarItemChange = (index, itemIndex, value) => {
-        const newData = [...data];
-        newData[index].sekitar[itemIndex] = value;
-        setData(newData);
+        const updatedSekitar = [...data[index].sekitar];
+        updatedSekitar[itemIndex] = value;
+        onUpdateData(index, { sekitar: updatedSekitar });
     };
 
-    const handleAddSekitar = (index, newSekitar) => {
-        setData(prevData => {
-            const newData = [...prevData];
-            newData[index].sekitar = [...newData[index].sekitar, newSekitar];
-            return newData;
-        });
+    const handleAddSekitar = (index, newSekitar = '') => {
+        const updatedSekitar = [...data[index].sekitar, newSekitar];
+        onUpdateData(index, { sekitar: updatedSekitar });
     };
 
     const handleCoordinateChangeInTable = (index, lat, lng) => {
-        const newData = [...data];
-        newData[index].koordinat = [lat, lng];
-        setData(newData);
+        onUpdateData(index, { koordinat: [lat, lng] });
     };
 
-    const handleDelete = (index) => {
-        // Implement delete functionality here
+    const handleDelete = (id) => {
+        // This should call a delete function from your hook
+        // For now, just log the ID
         console.log(`Delete item with id: ${id}`);
+        // If you had a deleteData function passed as prop:
+        // onDeleteData(id);
     };
 
     return (
@@ -51,7 +48,7 @@ const ConfigHargaTable = ({ data, setData }) => {
                     </thead>
                     <tbody>
                         {data.map((row, index) => (
-                            <tr key={row.no} className={index % 2 === 0 ? 'even' : 'odd'}>
+                            <tr key={row.no || index} className={index % 2 === 0 ? 'even' : 'odd'}>
                                 {COLUMNS.map((col) => (
                                     <td key={col.accessor} className='table-cell'>
                                         <TableCell 

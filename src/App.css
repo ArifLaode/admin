@@ -59,6 +59,7 @@ body::-webkit-scrollbar {
 .data-table {
   border-collapse: collapse;
   margin-top: 60px;
+  margin-bottom: 60px;
   border-radius: 6px;
   overflow: hidden; /* Penting untuk border-radius */
   table-layout: auto; /* Hapus atau sesuaikan jika diperlukan */

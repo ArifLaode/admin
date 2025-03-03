@@ -13,6 +13,7 @@ const ConfigHarga = () => {
         setModalIsOpen,
         handleAddData,
         handleUpdateData,
+        handleDeleteData,
     } = useConfigHarga();
 
     if (isLoading) return <div>Loading...</div>;
@@ -22,8 +23,7 @@ const ConfigHarga = () => {
         <div>
             <SectionPage 
                 title="Konfigurasi Harga" 
-                width={100} 
-                height={700} 
+                width={100}
                 item={
                     <button 
                         onClick={() => setModalIsOpen(true)} 
@@ -36,6 +36,7 @@ const ConfigHarga = () => {
                 <ConfigHargaTable 
                     data={data} 
                     onUpdateData={handleUpdateData}
+                    onDeleteData={handleDeleteData}
                 />
                 
                 {isModalOpen && (

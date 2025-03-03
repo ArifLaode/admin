@@ -16,7 +16,7 @@ const TableCell = ({
 }) => {
     const renderSekitarCell = () => (
         <div className="space-y-2">
-            {row.sekitar.map((item, itemIndex) => (
+            {row.sekitar && row.sekitar.map((item, itemIndex) => (
                 <input
                     key={itemIndex}
                     type="text"
@@ -67,7 +67,7 @@ const TableCell = ({
     // Render cell berdasarkan tipe kolom
     switch (col.accessor) {
         case 'no':
-            return <span className="block text-center">{row.index + 1}</span>;
+            return <span className="block text-center">{index + 1}</span>;
         case 'sekitar':
             return renderSekitarCell();
         case 'harga':
