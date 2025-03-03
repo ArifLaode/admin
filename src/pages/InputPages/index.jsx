@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import SectionPage from "../component/SectionPage";
+import SectionPage from "../../component/SectionPage";
 import { FaPlus } from "react-icons/fa";
 
 const InputPage = () => {
@@ -32,20 +32,6 @@ const InputPage = () => {
   ]);
 
   const [modalOpen, setModalOpen] = useState(false);
-
-  const column = [
-    { Header: "No", accessor: "no" },
-    { Header: "Resi", accessor: "resi" },
-    { Header: "Nama Pengirim", accessor: "nama_pengirim" },
-    { Header: "Telp. Pengirim", accessor: "telp_pengirim" },
-    { Header: "Nama Penerima", accessor: "nama_penerima" },
-    { Header: "Telp. Penerima", accessor: "telp_penerima" },
-    { Header: "Tujuan", accessor: "tujuan" },
-    { Header: "Nama Barang", accessor: "nama_barang" },
-    { Header: "Berat", accessor: "berat" },
-    { Header: "Harga", accessor: "harga" },
-  ];
-
   const [formData, setFormData] = useState({
     nama_pengirim: "",
     telp_pengirim: "",
@@ -94,9 +80,6 @@ const InputPage = () => {
       berat: formData.berat,
       harga: formData.harga,
     };
-    // setData([...data, newDataItem]);
-
-    console.log(newDataItem);
 
     setFormData({
       nama_pengirim: "",
